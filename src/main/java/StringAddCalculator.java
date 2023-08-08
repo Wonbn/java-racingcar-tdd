@@ -17,6 +17,13 @@ public class StringAddCalculator {
         }
 
         numbers = splitString(in, ":|,");
+
+        for(String number : numbers) {
+            if(stoi(number) < 0) {
+                throw new RuntimeException("음수는 입력할 수 없습니다.");
+            }
+        }
+
         return sumNumbers(numbers);
     }
 
@@ -43,8 +50,5 @@ public class StringAddCalculator {
 
     private static int stoi(String str) {
         return Integer.parseInt(str);
-    }
-
-    public static void main(String[] args) {
     }
 }
