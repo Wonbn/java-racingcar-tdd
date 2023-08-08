@@ -1,3 +1,6 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class StringAddCalculator {
     static String[] numbers;
 
@@ -6,12 +9,18 @@ public class StringAddCalculator {
             return 0;
         }
 
-        numbers = splitString(in, ",|:");
+        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(in);
+        if(m.find()) {
+            String customDelimiter = m.group(1);
+            numbers = m.group(2).split(customDelimiter);
+            return sumNumbers(numbers);
+        }
 
+        numbers = splitString(in, ":|,");
         return sumNumbers(numbers);
     }
 
-    private static String[] splitString(String in,String separator) {
+    private static String[] splitString(String in, String separator) {
         return in.split(separator);
     }
 
@@ -34,5 +43,8 @@ public class StringAddCalculator {
 
     private static int stoi(String str) {
         return Integer.parseInt(str);
+    }
+
+    public static void main(String[] args) {
     }
 }
