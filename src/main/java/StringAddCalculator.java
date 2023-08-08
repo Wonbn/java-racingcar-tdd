@@ -1,27 +1,28 @@
 public class StringAddCalculator {
-    static int sum = 0;
+    static String[] numbers;
 
     public static int splitAndSum(String in) {
         if(isNull(in)) {
             return 0;
         }
 
-        splitString(in,",");
+        numbers = splitString(in, ",|:");
 
-        return sum;
+        return sumNumbers(numbers);
     }
 
-    private static void splitString(String in,String separator) {
-        String[] tmpNumbers = in.split(separator);
+    private static String[] splitString(String in,String separator) {
+        return in.split(separator);
+    }
 
-        for(int i = 0; i < tmpNumbers.length; i++) {
-            if(tmpNumbers[i].length() != 1) {
-                splitString(tmpNumbers[i], ":");
-            }
-            if(tmpNumbers[i].length() == 1) {
-                sum += stoi(tmpNumbers[i]);
-            }
+    private static int sumNumbers(String[] numbers) {
+        int sum = 0;
+
+        for(int i = 0; i < numbers.length; i++) {
+            sum += stoi(numbers[i]);
         }
+
+        return sum;
     }
 
     private static boolean isNull(String in) {
