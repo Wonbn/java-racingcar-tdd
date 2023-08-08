@@ -7,8 +7,10 @@ public class StringAddCalculator {
             return 0;
         }
 
-        strArr = in.split("");
-        sum = stoi(strArr[0]);
+        strArr = in.split(",");
+        for(int i = 0; i < strArr.length; i++) {
+            sum += stoi(strArr[i]);
+        }
 
         return sum;
     }
