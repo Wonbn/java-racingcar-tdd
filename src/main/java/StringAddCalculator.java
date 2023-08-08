@@ -7,6 +7,9 @@ public class StringAddCalculator {
             return 0;
         }
 
+        strArr = in.split("");
+        sum = stoi(strArr[0]);
+
         return sum;
     }
 
